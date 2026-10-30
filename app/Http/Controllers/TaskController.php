@@ -23,7 +23,7 @@ class TaskController extends Controller
      * @return \Illuminate\Contracts\View\View\Illuminate\Contracts\View\Factory
      */
     public function index(Request $request){
-        $tasks = $request->user()->tasks()->orderBy("created_at","desc")->get();
+        $tasks = $this->tasks->forUser($request->user());
         return view("tasks.index",compact("tasks"));
     }
 
